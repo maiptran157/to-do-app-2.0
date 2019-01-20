@@ -1,3 +1,3 @@
 export default {
-    SAMPLE_ACTION_TYPE: 'sample_action_type'
+    ADD_ITEM: 'add_item'
 }

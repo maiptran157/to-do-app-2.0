@@ -6,7 +6,7 @@ import AddItem from './add_item';
 class App extends Component {
     render() {
         return (<div className="container">
-            <Route path="/" component={ListItems} />
+            <Route exact path="/" component={ListItems} />
             <Route exact path="/add-item" component={AddItem} />
 
         </div >
