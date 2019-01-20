@@ -8,7 +8,8 @@ class ListItems extends Component {
         var listToBeRendered = [];
         for (let i = 0; i < itemList.length; i++) {
             listToBeRendered[i] = <div key={i} className="collection-item">
-                <span className="new badge">{itemList[i].completeStatus ? 'Completed' : 'Not Completed'}</span>
+                {itemList[i].completeStatus ?
+                    <span className="new badge" data-badge-caption={"Completed"}></span> : <span className="new badge red" data-badge-caption={"Incomplete"}></span>}
                 {itemList[i].itemName}</div>
         }
         return listToBeRendered;
