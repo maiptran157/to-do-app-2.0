@@ -13,12 +13,14 @@ import itemList from '../dummy_data/item_list';
 //     }
 // }
 
-export function addListItem(item) {
+export function addListItem(data) {
+    console.log("itemList before adding new item:", itemList)
     // const resp = axios.post(`${BASE_URL}/todos${API_KEY}`, item);
     itemList.push({
-        "itemName": item,
+        "itemName": data.itemName,
         "completeStatus": false
     })
+    console.log("itemList after adding new item:", itemList)
     return {
         type: types.ADD_LIST_ITEM,
         payload: itemList

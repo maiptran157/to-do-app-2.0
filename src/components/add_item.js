@@ -7,7 +7,7 @@ class AddItem extends Component {
             <h1 className="center">Add Item</h1>
             <div className="row">
                 <div className="col-s8 offset-2">
-                    <AddItemForm />
+                    <AddItemForm history={this.props.history} />
                 </div>
             </div>
         </div >

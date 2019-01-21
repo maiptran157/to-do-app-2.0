@@ -6,15 +6,16 @@ import { renderInput } from '../helpers';
 
 class AddItemForm extends Component {
 
-    saveItem = async (values) => {
-        await this.props.addListItem(values);
+    addItemToList = (values) => {
+        console.log(values);
+        this.props.addListItem(values);
         this.props.history.push('/');
     }
 
     render() {
 
         const { handleSubmit } = this.props;
-        return (<form action="" onSubmit={handleSubmit(this.saveItem)}>
+        return (<form action="" onSubmit={handleSubmit(this.addItemToList)}>
             <Field name="itemName" component={renderInput} label="Item Name" />
             <div className="row">
                 <div className="s12 right-align">
@@ -44,7 +45,3 @@ export default reduxForm({
     form: 'add-item',
     validate: validate
 })(AddItemForm);
-
-
-
-// export default AddItemForm;
