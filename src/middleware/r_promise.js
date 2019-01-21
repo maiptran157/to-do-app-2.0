@@ -7,7 +7,7 @@ export default (store) => (next) => (action) => {
     action.payload.then((resp) => {
         const newAction = {
             ...action,
-            apyload: resp
+            payload: resp
         };
 
         store.dispatch(newAction);

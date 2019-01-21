@@ -1,3 +1,4 @@
 export default {
-    SAMPLE_ACTION_TYPE: 'sample_action_type'
+    // ADD_ITEM: 'add_item',
+    ADD_LIST_ITEM: 'add_list_item',
 }
