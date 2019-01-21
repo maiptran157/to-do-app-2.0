@@ -7,7 +7,6 @@ import { renderInput } from '../helpers';
 class AddItemForm extends Component {
 
     addItemToList = (values) => {
-        console.log(values);
         this.props.addListItem(values);
         this.props.history.push('/');
     }
