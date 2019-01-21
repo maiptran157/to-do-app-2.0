@@ -7,4 +7,7 @@ const rootReducer = combineReducers({
     form: formReducer
 });
 
+//blue printing what our state will look like
+//everytim you built a new reducer, add it to the rootReducer
+
 export default rootReducer;

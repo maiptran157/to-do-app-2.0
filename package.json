@@ -1,7 +1,7 @@
 {
   "name": "to-do-app-2.0",
   "version": "1.0.0",
-  "description": "Starting setup for react redux project",
+  "description": "To do app built in ReactJS with Redux",
   "main": "index.js",
   "scripts": {
     "start": "node dev_server.js",
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "materialize-css": "^1.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",

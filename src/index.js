@@ -7,9 +7,11 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
 import './assets/css/index.css';
 import App from './components/app';
-import rPromise from './middleware/r_promise';
+import rPormise from './middleware/r_promise';
+import think from './middleware/think';
 
-const store = createStore(rootReducer, {}, applyMiddleware(rPromise))
+
+const store = createStore(rootReducer, {}, applyMiddleware(think));
 
 ReactDOM.render(
     <Provider store={store}>

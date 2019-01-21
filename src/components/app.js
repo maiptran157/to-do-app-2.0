@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 import ListItems from './list_items';
 import AddItem from './add_item';
 
-class App extends Component {
-    render() {
-        return (<div className="container">
-            <Route exact path="/" component={ListItems} />
-            <Route exact path="/add-item" component={AddItem} />
+const App = () => {
+    return <div className="container">
+        <Route exact path="/" component={ListItems} />
+        <Route path="/add-item" component={AddItem} />
+    </div >
 
-        </div >
-        );
-    }
 }
 
 export default App;
