@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import ListItems from './list_items';
 import AddItem from './add_item';
+import ItemDetails from './item_detail';
 
 class App extends Component {
     render() {
         return <div className="container">
             <Route exact path="/" component={ListItems} />
             <Route path="/add-item" component={AddItem} />
+            <Route path="/item-detail/:itemId" component={ItemDetails} />
             {/* <div class="fixed-action-btn">
                 <a class="btn-floating btn-large red">
                     <i class="large material-icons">menu</i>
