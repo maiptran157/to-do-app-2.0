@@ -2,9 +2,15 @@ import React, { Component } from 'react';
 import itemList from '../dummy_data/item_list';
 import ItemDetail from './item_detail';
 import { Link } from 'react-router-dom';
-
+import { getItemListFromFirebase } from '../actions';
+import { connect } from 'react-redux';
 
 class ListItems extends Component {
+    async componentDidMount() {
+        await this.props.getItemListFromFirebase();
+        console.log(this.props);
+    }
+
     renderItems = () => {
         var listToBeRendered = [];
         for (let i = 0; i < itemList.length; i++) {
@@ -33,6 +39,16 @@ class ListItems extends Component {
     }
 }
 
-export default ListItems;
+// export default ListItems;
+
+function mapStateToProps(state) {
+    return {
+        itemlist: state.itemList
+    }
+}
+
+export default connect(mapStateToProps, {
+    getItemListFromFirebase: getItemListFromFirebase
+})(ListItems);
 
 
