@@ -1,7 +1,7 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    itemList: [], //list of all todo
+    itemList: {}, //list of all todo
     itemDetail: {}, //single todo item
 }
 
