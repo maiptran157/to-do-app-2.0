@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import itemList from '../dummy_data/item_list';
 import ItemDetail from './item_detail';
 import { Link } from 'react-router-dom';
 import { getItemListFromFirebase } from '../actions';
@@ -8,17 +7,28 @@ import { connect } from 'react-redux';
 class ListItems extends Component {
     async componentDidMount() {
         await this.props.getItemListFromFirebase();
-        console.log(this.props);
+
     }
 
     renderItems = () => {
-        var listToBeRendered = [];
-        for (let i = 0; i < itemList.length; i++) {
-            listToBeRendered[i] = <Link to={`/item-detail/${itemList[i].itemId}`} key={itemList[i].itemId} className="collection-item highlight modal-trigger">
-                {itemList[i].completeStatus ?
-                    <span className="new badge #26c6da cyan lighten-1" data-badge-caption={"Completed"}></span> : <span className="new badge #ef5350 red lighten-1" data-badge-caption={"Incomplete"}></span>}
-                {itemList[i].itemName}</Link>
+
+        const { itemList } = this.props;
+
+        if (!itemList) {
+
+            return 'Loading...'
         }
+
+        var listToBeRendered = [];
+        let i = 0;
+        for (let key in itemList) {
+            listToBeRendered[i] = <Link to={`/item-detail/${key}`} key={key} className="collection-item highlight modal-trigger">
+                {itemList[key].completeStatus ?
+                    <span className="new badge #26c6da cyan lighten-1" data-badge-caption={"Completed"}></span> : <span className="new badge #ef5350 red lighten-1" data-badge-caption={"Incomplete"}></span>}
+                {itemList[key].itemName}</Link>
+            i++;
+        }
+
         return listToBeRendered;
     }
 
@@ -43,7 +53,7 @@ class ListItems extends Component {
 
 function mapStateToProps(state) {
     return {
-        itemlist: state.itemList
+        itemList: state.list.itemList.action
     }
 }
 

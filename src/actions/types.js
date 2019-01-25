@@ -3,5 +3,5 @@ export default {
     GET_ITEM_LIST: 'get_item_list',
     GET_ITEM_DETAIL: 'get_item_detail',
     DELETE_ITEM: 'delete_item',
-    TOGGLE_ITEM_COMPLETETION: 'toggle_item_completeyion',
+    TOGGLE_ITEM_COMPLETETION: 'toggle_item_completetion',
 }
