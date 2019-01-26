@@ -4,6 +4,7 @@ import { db } from '../firebase';
 export const addListItem = data => async dispatch => {
     const dataToSend = {
         itemName: data.itemName,
+        itemDetail: data.itemDetail,
         completeStatus: false
     }
     await db.ref('/itemList/').push(dataToSend);
