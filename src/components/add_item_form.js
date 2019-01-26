@@ -18,7 +18,7 @@ class AddItemForm extends Component {
             <Field name="itemName" component={renderInput} label="Item Name" />
             <div className="row">
                 <div className="s12 right-align">
-                    <button className="btn blue-grey darken-1">Add Item</button>
+                    <button className="btn #ffa726 orange lighten-1">Add Item</button>
                 </div>
             </div>
         </form>)

@@ -11,15 +11,8 @@ class ListItems extends Component {
     }
 
     renderItems = () => {
-
         const { itemList } = this.props;
-
-        if (!itemList) {
-
-            return 'Loading...'
-        }
-
-        var listToBeRendered = [];
+        const listToBeRendered = [];
         let i = 0;
         for (let key in itemList) {
             listToBeRendered[i] = <Link to={`/item-detail/${key}`} key={key} className="collection-item highlight modal-trigger">
@@ -33,6 +26,9 @@ class ListItems extends Component {
     }
 
     render() {
+
+        const { itemList } = this.props;
+
         return (
             <div>
                 <h1 className="center">Item List</h1>
@@ -41,9 +37,9 @@ class ListItems extends Component {
                         <button className="btn #4fc3f7 light-blue lighten-2">Add Item</button>
                     </Link>
                 </div>
-                <div className="collection">
+                {itemList ? <div className="collection">
                     {this.renderItems()}
-                </div>
+                </div> : 'Loading...'}
             </div >
         )
     }
