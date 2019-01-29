@@ -32,5 +32,19 @@ export const getItemDetailFromFirebase = data => dispatch => {
             action: snapshot.val()
         })
     })
+}
 
+export const toggleComplete = (itemId, completeStatus) => dispatch => {
+    if (completeStatus) {
+        db.ref(`/itemList/${itemId}`).update({
+            completeStatus: false
+        })
+    } else {
+        db.ref(`/itemList/${itemId}`).update({
+            completeStatus: true
+        })
+    }
+    return {
+        type: types.TOGGLE_ITEM_COMPLETETION
+    }
 }
