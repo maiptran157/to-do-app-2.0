@@ -48,3 +48,10 @@ export const toggleComplete = (itemId, completeStatus) => dispatch => {
         type: types.TOGGLE_ITEM_COMPLETETION
     }
 }
+
+export const deleteItemFromFirebase = (itemId) => dispatch => {
+    db.ref(`/itemList/${itemId}`).remove()
+    return {
+        type: types.DELETE_ITEM
+    }
+}

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getItemDetailFromFirebase, toggleComplete } from '../actions';
+import { getItemDetailFromFirebase, toggleComplete, deleteItemFromFirebase } from '../actions';
 import { connect } from 'react-redux';
 
 class ItemDetail extends Component {
     constructor(props) {
         super(props);
         this.toggleItemCompletion = this.toggleItemCompletion.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
     async componentDidMount() {
@@ -21,6 +22,13 @@ class ItemDetail extends Component {
         await this.props.toggleComplete(itemId, completeStatus);
     }
 
+    async deleteItem(e) {
+        e.preventDefault();
+        const { itemId } = this.props.match.params;
+        await this.props.deleteItemFromFirebase(itemId);
+        this.props.history.push('/');
+    }
+
     displayItemDetail() {
         const { itemDetail } = this.props;
         return <div className="card #d7ccc8 brown lighten-4">
@@ -31,7 +39,7 @@ class ItemDetail extends Component {
             <div className="card-action">
                 <a className={`waves-effect waves-light btn ${itemDetail.completeStatus ? "#ffd600 yellow accent-4" : "#26c6da cyan lighten-1"}`} onClick={this.toggleItemCompletion}>{itemDetail.completeStatus ? "Retrieve Item" : "Mark as Complete"}</a>
                 <a className="waves-effect waves-light btn #ffa726 orange lighten-1">Edit Item</a>
-                <a className="waves-effect waves-light btn #d84315 deep-orange darken-3">Delete Item</a>
+                <a className="waves-effect waves-light btn #d84315 deep-orange darken-3" onClick={this.deleteItem}>Delete Item</a>
             </div>
         </div>
     }
@@ -63,5 +71,6 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
     getItemDetailFromFirebase: getItemDetailFromFirebase,
-    toggleComplete: toggleComplete
+    toggleComplete: toggleComplete,
+    deleteItemFromFirebase: deleteItemFromFirebase,
 })(ItemDetail);
