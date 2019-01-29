@@ -45,8 +45,6 @@ class ListItems extends Component {
     }
 }
 
-// export default ListItems;
-
 function mapStateToProps(state) {
     return {
         itemList: state.list.itemList.action
