@@ -9,6 +9,8 @@ export default (state = DEFAULT_STATE, action) => {
     switch (action.type) {
         case types.GET_ITEM_LIST:
             return { ...state, itemList: action };
+        case types.GET_ITEM_DETAIL:
+            return { ...state, itemDetail: action };
         default:
             return state;
     }

@@ -3,7 +3,6 @@ import { Field, reduxForm } from 'redux-form';
 import { addListItem } from '../actions';
 import { connect } from 'react-redux';
 import { renderInput } from '../helpers';
-import ItemDetail from './item_detail';
 
 class AddItemForm extends Component {
 

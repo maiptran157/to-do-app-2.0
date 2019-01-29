@@ -1,22 +1,42 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import itemList from '../dummy_data/item_list';
+import { getItemDetailFromFirebase } from '../actions';
+import { connect } from 'react-redux';
 
 class ItemDetail extends Component {
-    render() {
-        console.log(itemList)
-        console.log(this.props.match.params.itemId);
 
+    async componentDidMount() {
+        const { itemId } = this.props.match.params;
+        await this.props.getItemDetailFromFirebase(itemId);
+    }
+
+    displayItemDetail() {
+        const { itemDetail } = this.props;
+        return <div className="card #d7ccc8 brown lighten-4">
+            <div className="card-content white-text">
+                <span className="card-title">{itemDetail.itemName}{itemDetail.completeStatus ? <span className="new badge #26c6da cyan lighten-1" data-badge-caption={"Completed"}></span> : <span className="new badge #ef5350 red lighten-1" data-badge-caption={"Incomplete"}></span>}</span>
+                <p>{itemDetail.itemDetail}</p>
+            </div>
+            <div className="card-action">
+                <a className="waves-effect waves-light btn #ffd600 yellow accent-4">{itemDetail.completeStatus ? "Retrieve Item" : "Mark as Complete"}</a>
+                <a className="waves-effect waves-light btn #ffa726 orange lighten-1">Edit Item</a>
+                <a className="waves-effect waves-light btn #d84315 deep-orange darken-3">Delete Item</a>
+            </div>
+        </div>
+    }
+
+    render() {
+        const { itemDetail } = this.props;
         return (
-            // <div to={`/item-detail/${this.props.id}`}>
             <div>
                 <h1 className="center">Item Detail</h1>
                 <div className="row">
-                    <Link className="s12" to="/">
-                        <button className="btn #4fc3f7 light-blue lighten-2">Item List</button>
+                    <Link className="waves-effect waves-light btn #4fc3f7 light-blue lighten-2" to="/">
+                        {/* <i className="material-icons">arrow_back</i> */}
+                        Item List
                     </Link>
                     <div className="col-s8 offset-2">
-                        {/* <AddItemForm history={this.props.history} /> */}
+                        {itemDetail ? this.displayItemDetail() : "Loading..."}
                     </div>
                 </div>
             </div >
@@ -24,4 +44,12 @@ class ItemDetail extends Component {
     }
 }
 
-export default ItemDetail;
+function mapStateToProps(state) {
+    return {
+        itemDetail: state.list.itemDetail.action
+    }
+}
+
+export default connect(mapStateToProps, {
+    getItemDetailFromFirebase: getItemDetailFromFirebase
+})(ItemDetail);

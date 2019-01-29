@@ -23,3 +23,14 @@ export const getItemListFromFirebase = () => dispatch => {
     });
     return dbRef;
 }
+
+export const getItemDetailFromFirebase = data => dispatch => {
+    const dbRef = db.ref(`/itemList/${data}`);
+    dbRef.on('value', (snapshot) => {
+        dispatch({
+            type: types.GET_ITEM_DETAIL,
+            action: snapshot.val()
+        })
+    })
+
+}
