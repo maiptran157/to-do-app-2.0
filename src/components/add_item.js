@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom';
 class AddItem extends Component {
     render() {
         return (<div to="/add-item">
-            <h1 className="center">Add Item</h1>
+            <h1 className="center"><span className="#fafafa grey-text text-lighten-5 ">Add a New Task</span></h1>
             <div className="row">
                 <Link className="s12" to="/">
-                    <button className="btn #4fc3f7 light-blue lighten-2">Item List</button>
+                    <button className="btn #424242 grey darken-3">Task List</button>
                 </Link>
+            </div>
+            <div className="row #fafafa grey lighten-5 hoverable">
                 <div className="col-s8 offset-2">
                     <AddItemForm history={this.props.history} />
                 </div>

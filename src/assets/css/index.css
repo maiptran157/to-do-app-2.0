@@ -1,5 +1,16 @@
-.card-action a {
+body {
+    background-image: url(https://source.unsplash.com/1600x900/?architecture,building,house,white,architect,luxury,modern,yellow,minimal,sweden);
+    background-size: cover;
+    background-position: fixed;
+    /* background-repeat: no-repeat; */
+    /* background-size: 100%; */
+}
+
+.card-action a, .nav-btn {
     margin-right: 1%;
     margin-bottom: 1%;
-    /* color: black; */
+}
+
+.form-style {
+    margin-top: 7%;
 }

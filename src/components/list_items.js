@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ItemDetail from './item_detail';
 import { Link } from 'react-router-dom';
 import { getItemListFromFirebase } from '../actions';
 import { connect } from 'react-redux';
@@ -17,8 +16,9 @@ class ListItems extends Component {
         for (let key in itemList) {
             listToBeRendered[i] = <Link to={`/item-detail/${key}`} key={key} className="collection-item highlight modal-trigger">
                 {itemList[key].completeStatus ?
-                    <span className="new badge #26c6da cyan lighten-1" data-badge-caption={"Completed"}></span> : <span className="new badge #ffd600 yellow accent-4" data-badge-caption={"Incomplete"}></span>}
-                {itemList[key].itemName}</Link>
+                    <span className="new badge #eeeeee grey lighten-3 grey-text" data-badge-caption={"Completed"}></span> : <span className="new badge #ffd600 yellow accent-4" data-badge-caption={"Incomplete"}></span>}
+                <span className="#424242 grey-text text-darken-3">{itemList[key].itemName}</span>
+            </Link>
             i++;
         }
 
@@ -31,10 +31,10 @@ class ListItems extends Component {
 
         return (
             <div>
-                <h1 className="center">Item List</h1>
+                <h1 className="center"><span className="#fafafa grey-text text-lighten-5">Task List</span></h1>
                 <div className="row">
                     <Link className="s12 right-align" to="/add-item">
-                        <button className="btn #4fc3f7 light-blue lighten-2">Add Item</button>
+                        <button className="btn #424242 grey darken-3">Add Task</button>
                     </Link>
                 </div>
                 {itemList ? <div className="collection">

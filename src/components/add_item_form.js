@@ -15,12 +15,12 @@ class AddItemForm extends Component {
 
         const { handleSubmit } = this.props;
         return (<div className="row">
-            <form className="col s12" action="" onSubmit={handleSubmit(this.addItemToList)}>
-                <Field name="itemName" id="itemName" component={renderInput} label="Item Name" />
-                <Field name="itemDetail" id="itemDetail" component={renderInput} label="Item Detail" />
+            <form className="col s8 offset-s2 form-style" action="" onSubmit={handleSubmit(this.addItemToList)}>
+                <Field name="itemName" id="itemName" component={renderInput} label="Task Name:" />
+                <Field name="itemDetail" id="itemDetail" component={renderInput} label="Task Detail:" />
                 <div className="row">
                     <div className="s12 right-align">
-                        <button className="btn #ffa726 orange lighten-1">Add Item</button>
+                        <button className="btn #ffd600 yellow accent-4">Add Task</button>
                     </div>
                 </div>
             </form>
@@ -33,11 +33,11 @@ function validate(values) {
     const errors = {};
 
     if (!itemName) {
-        errors.itemName = 'Please give your item a name';
+        errors.itemName = 'Task name is blank. Please give this task a title.';
     }
 
     if (!itemDetail) {
-        errors.itemDetail = 'Please give detail about your item';
+        errors.itemDetail = 'Task detail is blank. Please describe this task.';
     }
 
     return errors;
