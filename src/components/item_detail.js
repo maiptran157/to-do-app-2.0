@@ -31,15 +31,14 @@ class ItemDetail extends Component {
 
     displayItemDetail() {
         const { itemDetail } = this.props;
-        return <div className="card #d7ccc8 brown lighten-4">
+        return <div className="card #424242 grey darken-3">
             <div className="card-content white-text">
-                <span className="card-title">{itemDetail.itemName}{itemDetail.completeStatus ? <span className="new badge #26c6da cyan lighten-1" data-badge-caption={"Completed"}></span> : <span className="new badge #ffd600 yellow accent-4" data-badge-caption={"Incomplete"}></span>}</span>
+                <span className="card-title">{itemDetail.itemName}{itemDetail.completeStatus ? <span className="new badge #eeeeee grey lighten-3 grey-text" data-badge-caption={"Completed"}></span> : <span className="new badge #ffd600 yellow accent-4" data-badge-caption={"Incomplete"}></span>}</span>
                 <p>{itemDetail.itemDetail}</p>
             </div>
             <div className="card-action">
-                <a className={`waves-effect waves-light btn ${itemDetail.completeStatus ? "#ffd600 yellow accent-4" : "#26c6da cyan lighten-1"}`} onClick={this.toggleItemCompletion}>{itemDetail.completeStatus ? "Retrieve Item" : "Mark as Complete"}</a>
-                <a className="waves-effect waves-light btn #ffa726 orange lighten-1">Edit Item</a>
-                <a className="waves-effect waves-light btn #d84315 deep-orange darken-3" onClick={this.deleteItem}>Delete Item</a>
+                <a className={`waves-effect waves-light btn ${itemDetail.completeStatus ? "#ffd600 yellow accent-4" : "#00b0ff light-blue accent-3"}`} onClick={this.toggleItemCompletion}>{itemDetail.completeStatus ? "Retrieve Task" : "Mark as Complete"}</a>
+                <a className="waves-effect waves-light btn #dd2c00 deep-orange accent-4" onClick={this.deleteItem}>Delete Item</a>
             </div>
         </div>
     }
@@ -48,11 +47,15 @@ class ItemDetail extends Component {
         const { itemDetail } = this.props;
         return (
             <div>
-                <h1 className="center">Item Detail</h1>
+                <h1 className="center"><span className="#fafafa grey-text text-lighten-5 ">About This Task:</span></h1>
                 <div className="row">
-                    <Link className="waves-effect waves-light btn #4fc3f7 light-blue lighten-2" to="/">
+                    <Link className="nav-btn waves-effect waves-light btn #424242 grey darken-3" to="/">
                         {/* <i className="material-icons">arrow_back</i> */}
-                        Item List
+                        Task List
+                    </Link>
+                    <Link className="nav-btn waves-effect waves-light btn #424242 grey darken-3" to="/add-item">
+                        {/* <i className="material-icons">arrow_back</i> */}
+                        Add Task
                     </Link>
                     <div className="col-s8 offset-2">
                         {itemDetail ? this.displayItemDetail() : "Loading..."}
